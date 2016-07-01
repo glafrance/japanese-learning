@@ -1,0 +1,227 @@
+/*
+ MIT License
+
+ Copyright (c) 2016 Gregory Lafrance
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+ */
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+html, a {
+  font-family: arial, helvetica, sans-serif;
+  color: #767676;    
+}
+
+body {
+  padding: .5rem;
+}
+
+.home {
+  padding: .5rem;
+}
+
+#main-header {
+  text-align: center;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  margin-bottom: 5rem;
+  color: purple;
+}
+
+#main-header-slogan {
+  padding-top: .5rem;
+}
+
+#left-column {
+  float: left;
+  width: 25%;
+}
+
+#right-column {
+  float: left;
+  width: 75%;
+}
+
+a, a:active, a:focus, a:hover {
+  text-decoration: none;
+  outline: none;
+}
+
+#page-list {
+  padding-left: 1rem;
+  list-style-type: none;
+  
+}
+
+#page-list li {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+#page-title {
+  padding-bottom: 1rem;
+}
+
+#page-title-short {
+  display: none;
+  text-align: center;
+  padding-bottom: .5rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+
+th, td {
+  border: .1rem solid black;
+  padding: .3rem;
+  font-size: 1.2rem;
+  text-align: left;
+  width: 33%;
+}
+
+.english {
+  color: #767676;
+}
+
+.furigana {
+  color: blue;
+}
+
+#outer-container {
+  text-align: center;
+  width: 28rem;
+  height: 13rem;
+}
+
+#flashcard-container {
+  text-align: center;
+  width: 25rem;
+  height: 8.5rem;
+  border: .2rem solid #767676;
+  border-radius: .5rem;
+  padding: 1rem;
+}
+
+#flashcard-title {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+#flashcard-title-short {
+  text-align: center;
+  display: none;
+  padding-bottom: 1rem;
+}
+
+#flashcard-buttons {
+  text-align: center;
+}
+
+#flashcard-container #jFlash, 
+#flashcard-container #eFlash, 
+#flashcard-container #fFlash {
+  padding-bottom: .2rem;
+  line-height: 1.2rem;
+  visibility: hidden;
+}
+
+#flashcard-container #eFlash {
+  font-size: .8rem;
+}
+
+#flashcard-buttons input {
+  padding: .2rem;
+}
+
+#show-english {
+  display: block;
+  margin-top: .5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#flashcard-nav-buttons {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#prev-flashcard {
+  margin-right: .6rem;
+}
+
+#show-english {
+  margin-bottom: .5rem;
+  
+}
+
+#flashcard-counter {
+  padding-top: 1rem;
+}
+
+/*
+@media all  and (max-width: 600px) {
+  th, td {
+    font-size: 1rem;
+  }
+
+  td {
+    display: block;
+    width: 100%;
+    text-align: center;
+    border-bottom: 0;
+  }
+
+  tr td:last-child {
+    border-bottom: .2rem solid blue;
+  }
+
+  tr:last-child td:last-child {
+    border-bottom: .1rem solid black;
+  }
+
+  th {
+    display: none;
+  }
+
+  table {
+    border: 0;
+  }
+
+  #page-title {
+    display: none;
+  }
+
+  #page-title-short {
+    display: block;
+    font-size: 1rem;
+  }
+}
+
+*/
