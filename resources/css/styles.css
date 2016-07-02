@@ -46,14 +46,22 @@ body {
 
 #main-header {
   text-align: center;
-  margin-left: 10rem;
-  margin-right: 10rem;
-  margin-bottom: 5rem;
+  padding-bottom: 2rem;
   color: purple;
 }
 
 #main-header-slogan {
   padding-top: .5rem;
+}
+
+#page-title {
+  padding-bottom: 1rem;
+}
+
+#page-title-short {
+  display: none;
+  text-align: center;
+  padding-bottom: .5rem;
 }
 
 #left-column {
@@ -73,6 +81,7 @@ a, a:active, a:focus, a:hover {
 
 #page-list {
   padding-left: 1rem;
+  padding-right: 1rem;
   list-style-type: none;
   
 }
@@ -80,16 +89,6 @@ a, a:active, a:focus, a:hover {
 #page-list li {
   font-size: 1rem;
   margin-bottom: 2rem;
-}
-
-#page-title {
-  padding-bottom: 1rem;
-}
-
-#page-title-short {
-  display: none;
-  text-align: center;
-  padding-bottom: .5rem;
 }
 
 table {
@@ -114,30 +113,10 @@ th, td {
   color: blue;
 }
 
-#outer-container {
-  text-align: center;
-  width: 28rem;
-  height: 13rem;
-}
-
 #flashcard-container {
   text-align: center;
   width: 25rem;
   height: 8.5rem;
-  border: .2rem solid #767676;
-  border-radius: .5rem;
-  padding: 1rem;
-}
-
-#flashcard-title {
-  text-align: center;
-  padding-bottom: 1rem;
-}
-
-#flashcard-title-short {
-  text-align: center;
-  display: none;
-  padding-bottom: 1rem;
 }
 
 #flashcard-buttons {
@@ -185,8 +164,67 @@ th, td {
   padding-top: 1rem;
 }
 
-/*
+/*********************************************/
 @media all  and (max-width: 600px) {
+  html {
+    overflow-y: auto;
+  }
+
+  body {
+    padding: 0;
+  }
+
+  .home {
+    padding: .5rem;
+  }
+  
+  #main-header {
+    padding-bottom: .5rem;
+  }
+
+  #main-header-title {
+    font-size: 1.2rem;
+  }
+  
+  #main-header-slogan {
+    display: none;
+  }
+
+  #page-title {
+    display: none;
+  }
+
+  #page-title-short {
+    display: block;
+    font-size: 1rem;
+  }
+  
+  #left-column {
+    clear: left;
+    width: 100%;
+    text-align: center;
+  }
+
+  #right-column {
+    clear: left;
+    width: 100%;
+  }
+
+  #page-list {
+    margin-bottom: .5rem;
+    padding-right: .3rem;
+    border-bottom: .1rem solid #767676;
+  }
+
+  #page-list li {
+    margin-bottom: .5rem;
+  }
+  
+  table {
+    width: 99%;
+    margin-right: 0;
+  }
+  
   th, td {
     font-size: 1rem;
   }
@@ -195,7 +233,7 @@ th, td {
     display: block;
     width: 100%;
     text-align: center;
-    border-bottom: 0;
+    border: 0;
   }
 
   tr td:last-child {
@@ -213,15 +251,10 @@ th, td {
   table {
     border: 0;
   }
-
-  #page-title {
-    display: none;
-  }
-
-  #page-title-short {
-    display: block;
-    font-size: 1rem;
+  
+  #flashcard-container {
+    width: 100%;
+    padding-top: .3rem;
+    border: 0;
   }
 }
-
-*/
