@@ -40,18 +40,29 @@ body {
   padding: .5rem;
 }
 
+.header-links-container {
+  padding-bottom: 1rem;
+}
+
 .home {
   padding: .5rem;
 }
 
-#main-header {
-  text-align: center;
-  padding-bottom: 2rem;
-  color: purple;
+.home, .github {
+  margin-right: 10rem;
 }
 
-#main-header-slogan {
-  padding-top: .5rem;
+.header-links {
+  display: inline;
+}
+
+.other-sites {
+  padding: .1rem;
+}
+
+#main-header-title, #main-header-slogan {
+  text-align: center;
+  color: purple;
 }
 
 #page-title {
@@ -174,15 +185,38 @@ th, td {
     padding: 0;
   }
 
-  .home {
-    padding: .5rem;
-  }
-  
   #main-header {
+    text-align: center;
     padding-bottom: .5rem;
   }
 
+  .home {
+    padding-right: 3rem;
+  }
+  
+  .home, .github {
+    font-size: .8rem;
+    margin-right: 0;
+  }
+  
+  .header-links-container {
+    text-align: center;
+    padding-bottom: .5rem;
+  }
+
+  .header-links {
+    margin-bottom: .5rem;
+  }
+  
+  .other-sites {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: .5rem;
+  }
+
   #main-header-title {
+    display: block;
     font-size: 1.2rem;
   }
   

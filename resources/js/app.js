@@ -66,9 +66,30 @@
       },
       
       setEventListeners: function () {
-        //this.addEvent(document.getElementById('addPanelBtn'), "click", this.addPanel);        
+        this.addEvent(document.getElementById('japaneseOtherSitesSelect'), "change", this.otherSitesListener);        
       },
-      
+
+      otherSitesListener: function (event) {
+        var url = '';
+
+        switch(event.target.value) {
+          case 'javascript':
+            url = 'http://www.paragonica.com/index.html';
+            break;
+          case 'dashboard':
+            url = 'http://www.paragonica.com/dashboard';
+            break;
+          case 'flight':
+            url = 'http://www.paragonica.com/flightSimulator';
+            break;
+        }
+        if (url) {
+          window.open(url, '_blank');
+        }
+        event.target.value = 'other Paragonica sites';
+      },
+
+
       // Safely add an event listener, rather than wipe out an existing
       // listener with something like onresize="blahblah()"
       addEvent: function (targetItem, eventType, callback, eventReturn) {

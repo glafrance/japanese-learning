@@ -31,13 +31,21 @@ SOFTWARE.
     <script type="text/javascript" src="resources/js/app.js"></script>
   </head>
   <body onload="JAPANESE.initApp()">
-    <p class="home"><a href="index.html">Home</a></p>
-    
-    <header id="main-header">
+    <div id="main-header">
+      <div class="header-links-container">
+        <p class="home header-links"><a href="index.html">Home</a></p>
+        <p class="header-links github"><a href="https://github.com/glafrance" target="_blank">github</a></p>
+        <select id="japaneseOtherSitesSelect" class="header-links other-sites">
+          <option>other Paragonica sites</option>
+          <option value="javascript">JavaScript Coding</option>
+          <option value="dashboard">The Dashboard</option>
+          <option value="flight">Flight Simulator</option>
+        </select>
+      </div>
       <h2 id="main-header-title">Learn Japanese !!!</h2>
       <h4 id="main-header-slogan">A resource for learning the Japanese language</h4>
-    </header>
-
+    </div>
+    
     <div id="left-column">
       <ul id="page-list">
         <li><a href="#" onclick="JAPANESE.showPage('computing_vocab.html');return false;">Computing Vocabulary</a></li>
