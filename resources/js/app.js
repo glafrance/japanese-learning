@@ -66,29 +66,19 @@
       },
       
       setEventListeners: function () {
-        this.addEvent(document.getElementById('japaneseOtherSitesSelect'), "change", this.otherSitesListener);        
+        this.otherSitesListeners();       
       },
 
-      otherSitesListener: function (event) {
-        var url = '';
+      otherSitesListeners: function () {
+        var otherSitesNav = document.getElementById('otherSitesNav');
+        var otherSitesNavLinks = otherSitesNav.getElementsByTagName('li');
 
-        switch(event.target.value) {
-          case 'javascript':
-            url = 'http://www.paragonica.com/index.html';
-            break;
-          case 'dashboard':
-            url = 'http://www.paragonica.com/dashboard';
-            break;
-          case 'flight':
-            url = 'http://www.paragonica.com/flightSimulator';
-            break;
-        }
-        if (url) {
-          window.open(url, '_blank');
-        }
-        event.target.value = 'other Paragonica sites';
+        document.getElementById('otherSitesTitleShort').onclick = function () {
+          for (var idx = 0;idx < otherSitesNavLinks.length;idx++) {
+            otherSitesNavLinks.item(idx).style.visibility = "visible";
+          }    
+        };  
       },
-
 
       // Safely add an event listener, rather than wipe out an existing
       // listener with something like onresize="blahblah()"
