@@ -138,13 +138,14 @@ a, a:active, a:focus, a:hover {
 
 #page-list li {
   font-size: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 table {
   border-collapse: collapse;
   width: 100%;
   text-align: center;
+  margin-bottom: 1rem;
 }
 
 th, td {
@@ -159,10 +160,6 @@ th, td {
   color: #767676;
 }
 
-.furigana {
-  color: blue;
-}
-
 #flashcard-container {
   text-align: center;
   width: 25rem;
@@ -175,13 +172,14 @@ th, td {
 
 #flashcard-container #jFlash, 
 #flashcard-container #eFlash, 
-#flashcard-container #fFlash {
+#flashcard-container #fFlash,
+#flashcard-container #rFlash {
   padding-bottom: .2rem;
   line-height: 1.2rem;
   visibility: hidden;
 }
 
-#flashcard-container #eFlash {
+#flashcard-container #fFlash, #flashcard-container #rFlash {
   font-size: .8rem;
 }
 
@@ -327,6 +325,7 @@ th, td {
   table {
     width: 99%;
     margin-right: 0;
+    margin-bottom: .5rem;
   }
   
   th, td {
