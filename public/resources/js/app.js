@@ -295,8 +295,22 @@
        * Populate the first flashcard to be displayed.
        */
       processFlashcards: function (htmlPage) {  
+        var title = "", titleParts, idx, len;
+        
+        if (_currentDataType.indexOf('_') === -1) {
+          title = _currentDataType.charAt(0).toUpperCase() + _currentDataType.substr(1);
+        } else {
+          titleParts = _currentDataType.split('_');
+          for (idx = 0, len = _currentDataType.length;idx < len;idx++) {
+            title += titleParts[idx].charAt(0).toUpperCase() + titleParts[idx].substr(1);
+          }
+        }
+        
         _currentDataCursor = 0;
         _pageContent.innerHTML = htmlPage;
+                
+        document.getElementById('page-title').innerHTML = title + ' Flashcards';
+        document.getElementById('page-title-short').innerHTML = title + '<br />Flashcards';
         
         _jFlash = document.getElementById('jFlash'); 
         _fFlash = document.getElementById('fFlash'); 
@@ -327,9 +341,26 @@
        *
        * Build the table of words or phrases to be presented for study.
        */
-      processVocab: function (htmlPage) {  
-        _pageContent.innerHTML = htmlPage;
+      processVocab: function (htmlPage) { 
+        var title = "", titleParts, idx, len;
         
+        if (_currentDataType.indexOf('_') === -1) {
+          title = _currentDataType.charAt(0).toUpperCase() + _currentDataType.substr(1);
+        } else {
+          titleParts = _currentDataType.split('_');
+          for (idx = 0, len = titleParts.length;idx < len;idx++) {
+            title += titleParts[idx].charAt(0).toUpperCase() + titleParts[idx].substr(1);
+            if (idx < len - 1) {
+              title += ' ';
+            }
+          }
+        }
+
+        _pageContent.innerHTML = htmlPage;
+
+        document.getElementById('page-title').innerHTML = title + ' Vocabulary';
+        document.getElementById('page-title-short').innerHTML = title + '<br />Vocabulary';
+
         var vocabItem, item;
         var vocabTable = document.getElementById('vocab_table');
         var idx1, len1 = _currentData.length;
