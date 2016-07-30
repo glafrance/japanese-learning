@@ -79,6 +79,9 @@
         // set up event listeners in the app
         this.setEventListeners();   
         
+        // Add the Google Analytics <script> tag with the trackingID.
+        this.addGoogleAnalytics();
+        
         // Get and store a reference to the main content container.
         _pageContent = document.getElementById('page-content');
         
@@ -87,6 +90,49 @@
       // set up event listeners in the app
       setEventListeners: function () {
         this.otherSitesListeners();       
+      },
+      
+      /**
+       * Add the Google Analytics <script> tag.
+       * This is so we don't need our trackingID submitted to git.
+       */
+      addGoogleAnalytics: function () {
+        var data, url, urlRoot = '', options = {};
+        var callback, scriptTagData, scriptTag;
+        
+        scriptTagData = "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){" +
+          "(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o)," +
+          "m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)" +
+          "})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');" +
+          "ga('create', 'TRACKING_ID', 'auto');" +
+          "ga('send', 'pageview');";
+        
+        url = 'google_analytics.json';
+
+        // After the trackingID has been obtained, add the 
+        // Google Analytics <script> tag.
+        callback = function (options) {
+          if (options) {
+            if (options.hasOwnProperty('data')) {
+              data = JSON.parse(options.data);
+              if (data.hasOwnProperty('trackingID')) {
+                scriptTagData = scriptTagData.replace('TRACKING_ID', data.trackingID);  
+                
+                scriptTag = document.createElement('script');
+                scriptTag.innerHTML = scriptTagData;
+                document.head.appendChild(scriptTag);
+              }
+            }
+          }
+        };
+
+        this.makePageRequest({
+          url: url,
+          urlRoot: urlRoot,
+          callback: callback,
+          contentType: 'application/json',
+          callbackOptions: options
+        });
       },
 
       // When the UI element prompting user to see other Paragonica
@@ -146,7 +192,7 @@
        * effort to generate multiple pages for this site.
        */
       showPage: function (category, action) {
-        var data, url, options = {}, callback;
+        var data, url, urlRoot = 'resources/pages/', options = {}, callback;
         
         if (category && action) {
           // A file must exist, such as pages/vocab.html, pages/flashcards.html, etc.
@@ -168,6 +214,7 @@
 
           this.makePageRequest({
             url: url,
+            urlRoot: urlRoot,
             callback: callback,
             contentType: 'text/html',
             callbackOptions: options
@@ -188,7 +235,7 @@
        * there is no need to get it again. Only one fetched word list is stored.
        */
       getData: function (options) {
-        var url;
+        var url, urlRoot = 'resources/data/';
         
         if (options) {
           if (options.hasOwnProperty('category') && 
@@ -205,11 +252,12 @@
               // Target word list category was NOT previously
               // fetched and stored, so get it now.
               // A file must exist, such as data/computing.txt.
-              url = '../data/' + options.category + '.txt';
+              url =  options.category + '.txt';
               options['htmlPage'] = options.data;
               
               PARAJP.makePageRequest({
                 url: url,
+                urlRoot: urlRoot,
                 callback: PARAJP.processData,
                 callbackOptions: options,
                 contentType: 'text/plain'
@@ -448,7 +496,7 @@
        */
       makePageRequest: function (options) {
         (function(options) {
-          var httpRequest = new XMLHttpRequest();
+          var fullUrl, origin, httpRequest = new XMLHttpRequest();
 
           if (!httpRequest) {
             console.log('makePageRequest - cannot create an XMLHTTP instance');
@@ -459,6 +507,10 @@
           if(!PARAJP.validOptions(options)) {
             return false;
           }
+          
+          origin = (window.location.origin.indexOf('localhost') == -1) ? window.location.origin + '/japanese/' : window.location.origin + '/';
+          
+          fullUrl = origin + options.urlRoot + options.url + '?pseudoParam=' + new Date().getTime();
 
           httpRequest.onreadystatechange = function () {
             if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -474,7 +526,7 @@
           };
           
           // Append current time in milliseconds from epoch to avoid caching.
-          httpRequest.open('GET', 'resources/pages/' + options.url + '?pseudoParam=' + new Date().getTime());
+          httpRequest.open('GET', fullUrl);
           httpRequest.setRequestHeader('Content-Type', options.contentType || 'text/plain');
           httpRequest.send();
         })(options)
@@ -489,11 +541,13 @@
 
         if (options) {
           if (!options.hasOwnProperty('url') || 
+              !options.hasOwnProperty('urlRoot') ||
               !options.hasOwnProperty('callback') || 
               !options.hasOwnProperty('callbackOptions')) {
             isValid = false;
             console.log('validOptions - options must have at least these options:\n' +
                           "\turl - name of file to retrieve\n" + 
+                          "\turlRoot - root to be appended to url\n" + 
                           "\tcallback - function to call after request\n" +
                           "\tcallbackOptions - options used with the callback");
           }
