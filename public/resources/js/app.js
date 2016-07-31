@@ -23,8 +23,6 @@
  */
 
 (function(global) {
-  'use strict';
-  
   // Our app lives in a single global variable to avoid poluting the
   // global namespace, and to avoid conflict with other frameworks.
   global.PARAJP = global.PARAJP || (global.PARAJP = (function () {
